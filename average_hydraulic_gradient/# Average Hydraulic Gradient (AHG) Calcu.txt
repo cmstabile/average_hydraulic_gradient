@@ -1,0 +1,51 @@
+# Average Hydraulic Gradient (AHG) Calculator
+
+# Function to calculate hydraulic gradient between two points
+def hydraulic_gradient(elevation1, elevation2, distance):
+    """
+    Calculates the hydraulic gradient between two points
+    Args:
+    elevation1: Groundwater elevation at point 1
+    elevation2: Groundwater elevation at point 2
+    distance: Distance between point 1 and point 2 in feet
+
+    Returns:
+    Gradient between the two points
+    """
+    return (elevation1 - elevation2) / distance
+
+# Function to calculate Average Hydraulic Gradient (AHG)
+def average_hydraulic_gradient():
+    """
+    Prompts user input for groundwater elevations at points A, B, and C,
+    and distances between points to calculate the average hydraulic gradient.
+    """
+    # Get user input for groundwater elevations and distances
+    try:
+        elevation_A = float(input("Enter the groundwater elevation at Point A: "))
+        elevation_B = float(input("Enter the groundwater elevation at Point B: "))
+        elevation_C = float(input("Enter the groundwater elevation at Point C: "))
+
+        distance_AB = float(input("Enter the distance between Point A and Point B (in feet): "))
+        distance_AC = float(input("Enter the distance between Point A and Point C (in feet): "))
+    
+    except ValueError:
+        print("Invalid input! Please enter numerical values only.")
+        return
+
+    # Calculate hydraulic gradients between the points
+    gradient_AB = hydraulic_gradient(elevation_A, elevation_B, distance_AB)
+    gradient_AC = hydraulic_gradient(elevation_A, elevation_C, distance_AC)
+
+    # Calculate the average hydraulic gradient
+    average_gradient = (gradient_AB + gradient_AC) / 2
+
+    # Display the results
+    print(f"\nHydraulic Gradient between Point A and Point B: {gradient_AB:.4f}")
+    print(f"Hydraulic Gradient between Point A and Point C: {gradient_AC:.4f}")
+    print(f"Average Hydraulic Gradient (AHG): {average_gradient:.4f}")
+
+# Run the program
+if __name__ == "__main__":
+    print("Average Hydraulic Gradient (AHG) Calculator")
+    average_hydraulic_gradient()
